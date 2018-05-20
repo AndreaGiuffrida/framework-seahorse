@@ -1,0 +1,47 @@
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@mixin font($w:300,$s:false) {
+  @if($s) { @include font-size($s); }
+  font-family: 'Montserrat','Helvetica',sans-serif;
+  font-weight: $w;
+}
+
+
+
+%ptitle {
+  @include font(400,20px);
+  line-height: 1.35;
+}
+
+%pdesc {
+  @include font-size(14px);
+  line-height: 1.35;
+}
+
+%psmall {
+  @include font-size(11px);
+  line-height: 1.35;
+}
+
+p {
+
+  letter-spacing: 1px;
+  @include font(300);
+  margin: 15px 0;
+
+  &.title {
+    @extend %ptitle;
+  }
+
+  &.desc {
+    @extend %pdesc;
+  }
+
+  &.small {
+    @extend %psmall;
+  }
+
+}

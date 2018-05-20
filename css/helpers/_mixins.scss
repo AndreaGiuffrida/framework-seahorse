@@ -1,0 +1,118 @@
+@mixin media($media:sm) {
+    @if $media == sm {
+      @media only screen and (min-width: $tablet-min-width) { @content; }
+    } @else if $media == md {
+      @media only screen and (min-width: $desktop-min-width)  { @content; }
+    } @else if $media == lg {
+      @media only screen and (min-width: $desktop-wide-min-width)  { @content; }
+    } @else if $media == xs {
+      @media only screen and (max-width: $smartphone-max-width)  { @content; }
+    } @else if $media == xs-min {
+      @media only screen and (max-width: $smartphone-min-max-width)  { @content; }
+    }
+}
+
+
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
+}
+
+
+@mixin advprefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
+
+@mixin clearfix() {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin full($p:absolute) {
+  position: $p;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+@mixin columns($count,$gap:0px){
+  @include advprefix((
+    column-count: $count,
+    column-gap: $gap
+  ), webkit moz);
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} { @content; }
+    @keyframes #{$animation-name} { @content; }
+}
+
+@mixin animation($name,$duration:.5s,$delay:0s,$fillmode:forwards,$ease:$ease-bezier-in-out) {
+  @include prefix(animation-name,$name);
+  @include prefix(animation-duration,$duration);
+  @include prefix(animation-fill-mode,$fillmode);
+  @include prefix(animation-timing-function,$ease);
+  @include prefix(animation-delay,$delay);
+}
+
+@mixin transition($time: .25s, $delay:0s, $p:all, $timing-function: $ease-bezier-out) {
+  @include prefix(transition, $p $time $timing-function $delay);
+}
+
+
+@mixin centerY() {
+  top: 50%;
+  @include prefix(transform, translateY(-50%));
+}
+
+@mixin centerX() {
+  left: 50%;
+  @include prefix(transform, translateX(-50%));
+}
+
+@mixin center() {
+  top: 50%;
+  left: 50%;
+  @include prefix(transform, translate3D(-50%,-50%,0));
+}
+
+@mixin translate($x:0,$y:0,$z:0) {
+  @include prefix(transform, translate3D($x,$y,$z));
+}
+
+@mixin translateX($x:0) {
+  @include prefix(transform, translate3D($x,0,0));
+}
+
+@mixin translateY($y:0) {
+  @include prefix(transform, translate3D(0,$y,0));
+}
+
+
+@mixin rotate($deg:0) {
+  @include prefix(transform, rotate($deg));
+}
+
+@mixin scale($scale:0) {
+  @include prefix(transform, scale($scale));
+}

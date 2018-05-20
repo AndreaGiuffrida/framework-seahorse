@@ -1,0 +1,11 @@
+.__hit {
+
+  cursor: pointer;
+  user-select: none;
+  
+  &.__disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+
+}

@@ -1,0 +1,28 @@
+.content {
+
+  display: block;
+  margin: 0 auto;
+  padding: 0 25px;
+
+  @include media {
+    padding: 0;
+    max-width: 720px;
+  }
+
+  @include media(md) {
+    max-width: 950px;
+  }
+
+  @include media(lg) {
+    max-width: 1120px;
+  }
+
+}
+
+.table{
+  @extend %table;
+}
+
+.table-cell{
+  @extend %table-cell;
+}

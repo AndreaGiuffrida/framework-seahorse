@@ -1,0 +1,29 @@
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+@each $pos in left, right, center, justify {
+  .text-#{$pos} {
+    text-align: $pos;
+  }
+}
+
+@each $media in xs, sm, md, lg {
+  @each $pos in left, right, center, justify {
+    @include media($media) {
+      .text-#{$pos}-#{$media} {
+        text-align: $pos;
+      }
+    }
+  }
+}
+
+@each $media in xs, sm, md, lg {
+  @each $pos in left, right {
+    @include media($media) {
+      .pull-#{$pos}-#{$media} {
+        float: $pos;
+      }
+    }
+  }
+}

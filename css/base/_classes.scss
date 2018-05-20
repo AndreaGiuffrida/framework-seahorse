@@ -1,0 +1,29 @@
+%visuallyhidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+%inline-block {
+  display: inline-block;
+  vertical-align: baseline;
+  *display: inline;
+  *vertical-align: auto;
+  *zoom: 1;
+}
+
+%table {
+  @include full(relative);
+  display: table;
+}
+
+%table-cell {
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
