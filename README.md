@@ -1,11 +1,11 @@
-# Webpack Base
+# Seahorse MVCS JS Framework
 
 ### Developing locally
 
 1. Run
 
 	```
-	npm run dev
+	npm start
 	```
 
 2. In your browser, navigate to: [http://localhost:8080/](http://localhost:8080/)
