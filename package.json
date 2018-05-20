@@ -1,6 +1,6 @@
 {
-  "name": "webpack-base",
-  "version": "1.0.0",
+  "name": "seahorse-framework",
+  "version": "0.1.0",
   "description": "",
   "main": "app.js",
   "scripts": {
